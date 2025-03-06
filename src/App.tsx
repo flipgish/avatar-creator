@@ -79,7 +79,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100">
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-center text-indigo-600">AI Avatar Generator</h1>
+          <h1 className="text-3xl font-bold text-center text-indigo-600">Avatar Generator</h1>
           <p className="text-center text-gray-600 mt-2">Upload your photo and transform it into stylized avatars</p>
         </div>
       </header>
