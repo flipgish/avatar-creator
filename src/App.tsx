@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { Upload, Image as ImageIcon, Settings, RefreshCw, Download, Trash2, MessageSquare } from 'lucide-react';
 import AvatarStyleSelector from './components/AvatarStyleSelector';
 import AvatarEditor from './components/AvatarEditor';
 import ChatInterface from './components/ChatInterface';
 import { AvatarStyle } from './types';
+import { useDropzone } from 'react-dropzone';
 
 function App() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -28,6 +29,18 @@ function App() {
   const triggerFileInput = () => {
     fileInputRef.current?.click();
   };
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setSelectedFile(acceptedFiles[0]);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      'image/*': ['.jpeg', '.jpg', '.png']
+    },
+    maxFiles: 1
+  });
 
   const generateAvatar = () => {
     if (!uploadedImage) return;
